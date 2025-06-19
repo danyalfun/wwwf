@@ -146,9 +146,8 @@ script = ExtResource("1_yj4gv")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
-position_smoothing_enabled = true
 position_smoothing_speed = 10.0
-rotation_smoothing_enabled = true
+drag_vertical_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_yj4gv")

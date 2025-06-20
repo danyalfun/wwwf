@@ -1,26 +1,15 @@
-extends RigidBody2D
+extends Area2D
 
-@export var max_es = Vector2(2,2)
-@export var epf = Vector2(0.1,0.1)
-@export var e: Area2D
-
-var x
-var now = false
+@onready var scale_ = $CollisionShape2D.shape.radius
+var x = 1
 
 func _ready():
-	x = self.position.x
-	
-	$AnimatedSprite2D.play("default")
-	await $AnimatedSprite2D.animation_finished
-	now = true
-	
-	
+	$CollisionShape2D.shape.radius = 0
 
-
-func _physics_process(delta):
-	self.position.x = x
+func _process(_delta):
+	translate(Vector2(1 * x,0))
 	
-	if now:
-		if e.scale < max_es:
-			e.scale += epf
-	
+	await get_tree().create_timer(0.9).timeout
+	$CollisionShape2D.shape.radius = scale_
+	await get_tree().create_timer(0.1).timeout
+	queue_free()

@@ -11,7 +11,7 @@ func _ready():
 	level = Global.curlevel
 	if checkpoints.get_child_count() >= level:
 		player.position = checkpoints.get_child(level).position
-		print(level)
+		print("level: " + str(level))
 		
 	self.add_child(player)
 	
